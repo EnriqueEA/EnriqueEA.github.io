@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 10vh;
+    background: rgb(46, 45, 45);
+    font-size: 1em;
+}
+
+.img-perfil {
+    height: 100%;
+}
+
+.name {
+    display: inline-block;
+    margin: auto;
+}
+
+.img-container {
+    height: 100%;
+    display: inline-block;
+}
