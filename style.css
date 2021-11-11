@@ -12,6 +12,7 @@ html {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
 	scroll-behavior: smooth;
+	color: #fff;
 }
 
 header {
@@ -19,20 +20,12 @@ header {
 	height: 4rem;
 	box-shadow: 0px 0px 15px 1px #66a6ff;
 	font-size: 1rem;
-	padding: 0 2rem;
+	padding: 0 1em;
 	position: fixed;
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-}
-
-header>nav {
-	z-index: -1;
-}
-
-nav>a:nth-child(2) {
-	min-width: 63.2px;
 }
 
 .my-name {
@@ -41,26 +34,65 @@ nav>a:nth-child(2) {
 }
 
 .my-name:hover {
-	text-shadow: 0px .5px .5px rgba(150, 150, 150, 0.5);
+	text-shadow: 0px 3px 1px rgba(150, 150, 150, 0.5);
 }
 
 .none {
 	display: none;
 }
 
+.menu-container {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	z-index: -1;
+}
+
+.link-icon {
+	border-radius: 100%;
+	display: flex;
+	z-index: 1;
+	transition: all 0.2s;
+}
+
+.link-icon:hover {
+	background: #2f84fa;
+}
+
+.nav-container {
+	position: fixed;
+	top: -13rem;
+	width: 100%;
+	left: 0;
+	transition: all 0.3s;
+}
+
+.show-nav {
+	top: 4em;
+	height: 100vh;
+}
+
 nav {
 	background: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);
-	padding: 1em 0;
-	position: fixed;
-	top: -12rem;
-	left: 0;
-	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	align-items: center;
-	gap: 1em;
+	align-items: stretch;
+}
+
+nav>a {
+	text-align: center;
+	padding: .7em;
+}
+
+nav>a:hover {
 	transition: all 0.3s;
+	background-color: #ffffff;
+	color: var(--primary-color);
+}
+
+nav>a:nth-child(2) {
+	min-width: 86px;
 }
 
 .menu-btn {
@@ -68,6 +100,7 @@ nav {
 	border: 1.5px solid #fff;
 	border-radius: 3px;
 	cursor: pointer;
+	z-index: 1;
 }
 
 .menu-btn svg {
@@ -75,19 +108,11 @@ nav {
 	fill: #fff;
 }
 
-.show-nav {
-	top: 4rem;
-}
-
 a {
 	text-decoration: none;
 	color: #fff;
 	font-weight: bold;
-}
-
-nav a:hover {
-	color: var(--primary-color);
-	transition: all 0.4s;
+	border-radius: 4px;
 }
 
 #welcome-container {
@@ -99,9 +124,19 @@ nav a:hover {
 	padding-top: 4rem;
 }
 
+.cursor {
+	background-color: #fff;
+	display: inline-block;
+	width: 2.5px;
+}
+
+.hide {
+	background-color: transparent;
+}
+
 #body {
 	background-color: rgba(0, 0, 0, 0.2);
-	height: 90vh;
+	height: calc(100vh - 4rem);
 	padding-bottom: 4rem;
 	display: flex;
 	flex-direction: column;
@@ -119,20 +154,35 @@ nav a:hover {
 	text-align: center;
 }
 
-#body a {
+.downloads {
+	font-weight: bold;
+	display: flex;
+	gap: .5em;
+	align-items: center
+}
+
+.button-download {
+	text-align: center;
 	padding: .7em;
 	border-radius: 8px;
 	border: 2px solid #fff;
 	background: var(--primary-color);
-	transition: all 0.3s;
 }
 
-#body a:hover {
-	padding: .7em;
-	border-radius: 8px;
+.button-download:hover {
+	transition: all 0.3s;
 	border: 2px solid var(--primary-color);
 	color: var(--primary-color);
 	background: #fff;
+}
+
+.bg-red {
+	background: #ff5749;
+}
+
+.bg-red:hover {
+	border: 2px solid #ff5749;
+	color: #ff5749;
 }
 
 .ad {
@@ -148,14 +198,22 @@ nav a:hover {
 	.menu-btn {
 		display: none;
 	}
-	nav {
-		background: transparent;
-		width: 55%;
+	.menu-container {
+		flex-direction: row-reverse;
+	}
+	.nav-container {
+		min-width: 500px;
 		max-width: 650px;
-		top: 0;
 		position: static;
+	}
+	.downloads {
+		gap: 1em;
+	}
+	nav {
+		width: 100%;
+		background: transparent;
 		flex-direction: row;
-		padding: 0;
 		justify-content: space-evenly;
+		gap: 1em;
 	}
 }

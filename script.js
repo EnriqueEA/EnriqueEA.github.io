@@ -1,43 +1,31 @@
 /* jshint esversion: 10 */
+import AutoWriter from './js/AutoWriter.js';
 
 window.onload = function () {
   const welcomeText = document.querySelector("#welcome-text span");
-  addAnimationToNav();
-  automaticWriting(["Me llamo Enrique y soy Desarrollador Web Junior"], welcomeText);
+	addAnimationToNavMenu();
+	animationCursor();
+	AutoWriter.writeIn({ element: welcomeText, text: "Me llamo Enrique y soy Desarrollador Web Junior"});
 };
 
-function addAnimationToNav() {
-  const btnMenu = document.querySelector(".menu-btn");
-  const [burgerMenu, close, nav] = document.querySelectorAll("nav, .menu-btn>svg");
+function addAnimationToNavMenu() {
+  const menuNav = document.querySelectorAll(".menu-btn, .nav-container");
+	const [btnBurgerMenu, btnClose] = document.querySelectorAll(".menu-btn>svg");
+	const header = document.querySelector('header');
 
-  btnMenu.addEventListener("click", () => {
-    nav.classList.toggle("show-nav");
-    burgerMenu.classList.toggle("none");
-    close.classList.toggle("none");
-  });
+	menuNav.forEach((v) => {
+		v.addEventListener("click", () => {
+			menuNav[1].classList.toggle("show-nav");
+			btnBurgerMenu.classList.toggle("none");
+			btnClose.classList.toggle("none");
+		});
+	});
 }
 
-function automaticWriting(sentences = [""], element = Element.prototype) {
-  writeIn({ element, sentence: sentences[0] });
-  console.log("Here" + sentences[0].length);
+function animationCursor() {
+	const cursor = document.querySelector('.cursor');
+	setInterval(() => {
+		cursor.classList.toggle('hide');
+	}, 450);
 }
 
-function writeIn({ element = Element.prototype, sentence = "", intervalSeconds = 0.15 }) {
-  if (sentence === "") return;
-
-  let index = 0;
-  let writing = true;
-  let counter = 0;
-
-  const number = setInterval(() => {
-		if (index === sentence.length-1) {
-			writing = false;
-    }
-		element.innerHTML += sentence[index];
-		writing === true ? index++ : index = 0;
-		if (writing === false && index === 0) {
-			clearInterval(number);
-		}
-    
-  }, intervalSeconds * 1000);
-}
