@@ -9,15 +9,17 @@ window.onload = function () {
 };
 
 function addAnimationToNavMenu() {
-  const menuNav = document.querySelectorAll(".menu-btn, .nav-container");
+	const menuNav = document.querySelectorAll(".menu-btn, .nav-container");
 	const [btnBurgerMenu, btnClose] = document.querySelectorAll(".menu-btn>svg");
 	const header = document.querySelector('header');
 
-	menuNav.forEach((v) => {
-		v.addEventListener("click", () => {
-			menuNav[1].classList.toggle("show-nav");
-			btnBurgerMenu.classList.toggle("none");
-			btnClose.classList.toggle("none");
+	menuNav.forEach((element) => {
+		element.addEventListener("click", () => {
+			if (document.body.offsetWidth <= 768) {
+				menuNav[1].classList.toggle("show-nav");
+				btnBurgerMenu.classList.toggle("none");
+				btnClose.classList.toggle("none");
+			}
 		});
 	});
 }

@@ -15,6 +15,10 @@ html {
 	color: #fff;
 }
 
+h2 {
+	font-size: 2rem;
+}
+
 header {
 	background: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);
 	height: 4rem;
@@ -68,7 +72,7 @@ header {
 }
 
 .show-nav {
-	top: 4em;
+	top: 3.9em;
 	height: 100vh;
 }
 
@@ -115,13 +119,35 @@ a {
 	border-radius: 4px;
 }
 
-#welcome-container {
+.section {
 	height: 100vh;
-	background-image: url('https://images.unsplash.com/photo-1597589827703-f4b68eafa0ce?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHByb2dyYW1taW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=60');
+	background-image: var(--image);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 	padding-top: 4rem;
+}
+
+.section-body {
+	background-color: rgba(0, 0, 0, 0.3);
+	height: calc(100vh - 4rem);
+	padding-bottom: 4rem;
+	display: flex;
+	/* flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1em; */
+}
+
+#home .section-body {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1em;
+}
+
+#about .section-body {
+	justify-content: center;
 }
 
 .cursor {
@@ -134,18 +160,7 @@ a {
 	background-color: transparent;
 }
 
-#body {
-	background-color: rgba(0, 0, 0, 0.2);
-	height: calc(100vh - 4rem);
-	padding-bottom: 4rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 1em;
-}
-
-#body h2 {
+#home .section-body h2 {
 	background: radial-gradient(#000 -100%, transparent 100%);
 	color: #fff;
 	font-size: 7vmin;
@@ -208,6 +223,9 @@ a {
 	}
 	.downloads {
 		gap: 1em;
+	}
+	.show-nav {
+		height: auto;
 	}
 	nav {
 		width: 100%;
